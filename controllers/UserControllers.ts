@@ -63,4 +63,20 @@ const UpdateUser = catchAysnc(
     });
   }
 );
-export { GetAll, UpdateUser, DeleteUser, GetUser };
+const GetMyInbox = catchAysnc(
+  async (req: any, res: Response, next: NextFunction) => {
+    const user = await prisma.User.findUnique({
+      where: {
+        id: req.user.id,
+      },
+      include: {
+        messages: true,
+      },
+    });
+    res.status(200).json({
+      status: "success",
+      data: user,
+    });
+  }
+);
+export { GetAll, UpdateUser, DeleteUser, GetUser, GetMyInbox };

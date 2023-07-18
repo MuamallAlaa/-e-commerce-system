@@ -4,6 +4,7 @@ dotenv.config();
 const app: Express = express();
 import cookieparser from "cookie-parser";
 import { router as UserRoutes } from "./Routers/UserRoutes";
+import { router as InboxRoute } from "./Routers/inboxRoute";
 
 app.use(express.json());
 app.use(cookieparser());
@@ -13,6 +14,8 @@ app.get("/", (req: Request, res: Response, next: NextFunction) => {
 });
 app.listen(9999, () => console.log("the server start"));
 app.use("/api/v1/users", UserRoutes);
+app.use("/api/v1/inbox", InboxRoute);
+
 // app.use("/api/v1/users", UsersRrouter);
 // app.use("/api/v1/books", BooksRrouter);
 // app.use("/api/v1/Categories", CategoriesRouter);
