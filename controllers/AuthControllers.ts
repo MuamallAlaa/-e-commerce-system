@@ -4,10 +4,7 @@ import { errorfeatures as AppError } from "../utilites/ErrorsHandler";
 import { OtpSend, OtpVerfiy } from "../utilites/otp";
 import { prisma } from "../utilites/prisma";
 const CatchAysnc = require("../utilites/CatchAysnc");
-const client = require("twilio")(
-  "AC796018843aab82291cfdd2484cee2887",
-  "9102a23e0cff05b5e4abe620e173b688"
-);
+
 const jwt = require("jsonwebtoken");
 const { promisify } = require("util");
 
