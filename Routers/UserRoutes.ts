@@ -8,6 +8,7 @@ import {
   CheangePassword,
   ForgetPassowrd,
   RestPassord,
+  roles,
 } from "../controllers/AuthControllers";
 import {
   GetAll,
@@ -16,7 +17,7 @@ import {
   DeleteUser,
   GetMyInbox,
 } from "../controllers/UserControllers";
-router.route("/").get(GetAll);
+router.route("/").get(Protected, roles("ADMIN"), GetAll);
 router.route("/singin").post(signin);
 
 router.route("/singup").post(signup);
